@@ -1,0 +1,27 @@
+<?php echo $parent; ?> .b-steps{
+	background-color: #ccc;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	vertical-align: top;
+	margin: auto;
+}
+<?php echo $parent; ?> .span{
+	font-size: 70px;
+}
+<?php echo $parent; ?> .flex{
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: space-around;
+}
+<?php echo $parent; ?> .steps{
+	height: <?php echo $content_height; ?>px;
+	background-attachment: fixed;
+	color: #<?php echo $content_color; ?>;
+	background-image: url(<?php echo $content_image; ?>?dt=<?php echo rand(); ?>);
+	-webkit-background-size: cover;
+	background-size: cover;
+}

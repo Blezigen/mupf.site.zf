@@ -1,0 +1,9 @@
+<div class="make-up-box-control">
+    <label><?php echo $setting["title"]; ?></label>
+    <input type="hidden" value="temp/image/<?php echo $setting["default"]; ?>" name="<?php echo $setting["option"]; ?>">
+    <input type="file" value="temp/image/<?php echo $setting["default"]; ?>" data-default-file="<?php echo $setting["default"]; ?>" hidden_data="<?php echo $setting["option"]; ?>" class="dropify" name="<?php echo $setting["option"]; ?>_file" data-height="200">
+    <script type="text/javascript">
+        $('.dropify').dropify();
+    </script>
+</div>
+

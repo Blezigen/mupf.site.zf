@@ -1,0 +1,78 @@
+.file-browser-control .clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.file-browser-control{
+    /*background-color: #00a65a;*/
+    padding: 0px 20px;
+    height:100%;
+    list-style: none;
+    margin: 0;
+    padding: 0 0 35px 0;
+}
+
+.file-browser-control-back{
+    width: 100%;
+    /*background-color: #3e4245;*/
+}
+
+.file-browser-btn.back{
+    background-color: #59a9f8;
+    color: #fff;
+    border: 0;
+    padding: 5px;
+    margin: 15px;
+    width: 100px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.file-browser-item{
+    margin: 15px;
+    float: left;
+    width: 142px;
+    height: 106px;
+    position: relative;
+    cursor: pointer;
+}
+.file-browser-item:hover {
+    background-color: #b9dcff;
+    border-radius: 5px;
+}
+
+.file-browser-item span{
+    display: block;
+    position: absolute;
+    margin-top: 110px;
+    width: 100%;
+    text-align: center;
+}
+
+.file-browser-item.folder{
+    background-image: url("/public/img/designer/folder.png");
+    background-position: center 2px;
+    background-repeat: no-repeat;
+}
+
+.file-browser-item.folder:hover{
+    background-color: transparent;
+    background-image: url("/public/img/designer/folder-selected.png");
+}
+
+
+
+
+.file-browser-item.image{
+    background-position: center 12px;
+    background-repeat: no-repeat;
+    background-size: 85px;
+}
+
+.file-browser-item.file{
+    background-image: url("/public/img/designer/file.png");
+    background-position: center 16px;
+    background-repeat: no-repeat;
+    background-size: 100px;
+}
+

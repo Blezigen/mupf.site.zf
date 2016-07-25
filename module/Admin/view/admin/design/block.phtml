@@ -1,0 +1,51 @@
+<?php if ($action == "block.get" ) { ?>
+    <div class="makeup-modal-title">
+        <div class="make-up-box-control">
+            Редактирование блока: $lg_<?php echo $print_data["data"]["id_section"]?>
+        </div>
+    </div>
+    <div class="makeup-modal-body">
+        <form action="setOptionBlock" class="set-option" method="get" id-section="<?php echo $print_data["data"]["id_section"]?>" update-block="#<?php echo $controller->_getSuffix(); ?><?php echo $print_data["data"]["id_section"]?>">
+            <?php $controller->get_SettingGrid($print_data["data"]["id_section"],$print_data["data"]["name_pack"], $print_data["data"]["name_template"]);?>
+            <div class="make-up-box-control">
+                <button class="btn-design btn-submit" type="submit">Сохранить</button>
+            </div>
+        </form>
+    </div>
+<?php } else if ($action == "block.add" ) { ?>
+    <div class="makeup-add"><div class="makeup-add-button_area"><button class="makeup-add-button btn-design" insert-position="0"><i class="fa fa-plus fa-lg" aria-hidden="true"></button></i></div></div>
+    <?php $insert_position = 1; ?>
+    <?php foreach ( $print_data["data"] as $key => $block ) { ?>
+        <div class="makeup-block clear-fix" id="<?php echo $block->getId() ?>">
+            <div class="makeup-view" id="<?php echo $controller->_getSuffix(); ?><?php echo $key; ?>">
+                <?php echo $controller->_getContent($block->getNamePack(),$block->getNameTemplate(),$block->getConfig(),$block->getId()); ?>
+            </div>
+            <div class="makeup-view-option">
+                <button class="makeup-edit btn-design" name-pack="<?php echo $block->getNamePack(); ?>" id-section="<?php echo $key; ?>" name-template="<?php echo $block->getNameTemplate(); ?>"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></button>
+                <button class="makeup-remove btn-design" id-section="<?php echo $key; ?>"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></button>
+            </div>
+        </div>
+
+        <div class="makeup-add"><div class="makeup-add-button_area"><button class="makeup-add-button btn-design" insert-position="<?php echo $insert_position;?>"><i class="fa fa-plus fa-lg" aria-hidden="true"></button></i></div></div>
+        <?php $insert_position++;?>
+    <?php } ?>
+<?php } else if ($action == "block.remove" ) { ?>
+    <div class="makeup-add"><div class="makeup-add-button_area"><button class="makeup-add-button btn-design" insert-position="0"><i class="fa fa-plus fa-lg" aria-hidden="true"></button></i></div></div>
+    <?php $insert_position = 1; ?>
+    <?php foreach ( $print_data["data"] as $key => $block ) { ?>
+        <div class="makeup-block clear-fix" id="<?php echo $block->getId() ?>">
+            <div class="makeup-view" id="<?php echo $controller->_getSuffix(); ?><?php echo $key; ?>">
+                <?php echo $controller->_getContent($block->getNamePack(),$block->getNameTemplate(),$block->getConfig(),$block->getId()); ?>
+            </div>
+            <div class="makeup-view-option">
+                <button class="makeup-edit btn-design" name-pack="<?php echo $block->getNamePack(); ?>" id-section="<?php echo $key; ?>" name-template="<?php echo $block->getNameTemplate(); ?>"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></button>
+                <button class="makeup-remove btn-design" id-section="<?php echo $key; ?>"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></button>
+            </div>
+        </div>
+
+        <div class="makeup-add"><div class="makeup-add-button_area"><button class="makeup-add-button btn-design" insert-position="<?php echo $insert_position;?>"><i class="fa fa-plus fa-lg" aria-hidden="true"></button></i></div></div>
+        <?php $insert_position++;?>
+    <?php } ?>
+<?php } else if ($action == "block.set" ) { ?>
+    <?php echo $controller->_getContent($print_data["data"]->getNamePack(),$print_data["data"]->getNameTemplate(),$print_data["data"]->getConfig(),$print_data["data"]->getId()); ?>
+<?php } ?>

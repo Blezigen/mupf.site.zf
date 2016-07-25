@@ -1,0 +1,43 @@
+/* Link */
+a, a:visited {
+    color: #000000;
+    cursor: pointer;
+    text-decoration: none;
+}
+a:hover {
+    color: #000000;
+    text-decoration: none;
+}
+a.color-light:hover{
+    color: #d5d500;
+}
+
+/* Button */
+button.btn-design{
+    background-color: #1772EC;
+    outline: none;
+    width: 40px;
+    height: 40px;
+    border: none;
+    color: #fff;
+    border-radius: 3px;
+}
+button.btn-design:hover{
+    background-color: #135DBC;
+    color: #fff;
+}
+button.btn-design:active {
+    background-color: rgba(18, 67, 117, 1);
+    color: #f1f1f1;
+}
+
+.TextControl{
+    border-radius: 4px 4px 4px 4px;
+    -moz-border-radius: 4px 4px 4px 4px;
+    -webkit-border-radius: 4px 4px 4px 4px;
+    border: 1px solid #E5E4E9;
+    padding: 10px;
+    color: #7A819B;
+    margin: 0 auto;
+    width:80%;
+}

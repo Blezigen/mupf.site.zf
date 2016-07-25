@@ -1,0 +1,52 @@
+<?php echo $this->doctype(); ?>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <?php echo $this->headTitle('ZF2 '. $this->translate('Skeleton Application'))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?php echo $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+
+        <?php echo $this->headLink() ?>
+
+        <?php echo $this->headScript() ?>
+
+        <!-- Le styles -->
+        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+            ->prependStylesheet($this->basePath('css/bootstrap/bootstrap.css'))
+            ->prependStylesheet($this->basePath('css/font-awesome.css'))
+            ->prependStylesheet($this->basePath('css/design/style.css'))
+            ->prependStylesheet($this->basePath('css/design/style.makeup-controls.css'))
+            ->prependStylesheet($this->basePath('css/design/style.makeup-modal.css'))
+            ->prependStylesheet($this->basePath('css/design/style.makeup-custom-modals.css'))
+            ->prependStylesheet($this->basePath('css/design/style.preloader.css'))
+            ->prependStylesheet($this->basePath('css/dropify/dropify.css'))
+            ->prependStylesheet($this->basePath('js/design/controls/jquery.pack_browser.css'))
+            ->prependStylesheet($this->basePath('js/colorpicker/jquery.colorpicker.css'))
+            ->prependStylesheet($this->basePath('js/jquery-ui/jquery-ui.css'))
+//            ->prependStylesheet($this->basePath('css/autogen/style.css'));
+
+        ; ?>
+
+        <!-- Scripts -->
+        <?php echo $this->headScript()
+            ->prependFile($this->basePath('js/design/script.js'))
+//            ->prependFile($this->basePath('js/cssrefresh.js'))
+            ->prependFile($this->basePath('js/design/controls/jquery.pack_browser.js'))
+            ->prependFile($this->basePath('js/design/script.preloader.js'))
+            ->prependFile($this->basePath('js/colorpicker/jquery.colorpicker.js'))
+            ->prependFile($this->basePath('js/jquery-ui/jquery-ui.js'))
+            ->prependFile($this->basePath('js/bootstrap.min.js'))
+            ->prependFile($this->basePath('js/dropify/dropify.js'))
+            ->prependFile($this->basePath('js/jquery.min.js'))
+            ->prependFile($this->basePath('js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+            ->prependFile($this->basePath('js/html5shiv.min.js'),   'text/javascript', array('conditional' => 'lt IE 9',))
+        ; ?>
+    </head>
+    <body>
+        <?php echo $this->content; ?>
+    </body>
+</html>

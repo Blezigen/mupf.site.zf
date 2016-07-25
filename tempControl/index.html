@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>ZF2 </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Le styles -->
+    <link href="style.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="css/font-awesome.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap/bootstrap.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="/public/js/design/controls/jquery.file_browser.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="/image/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+    <!-- Scripts -->
+    <!--[if lt IE 9]><script type="text/javascript" src="js/html5shiv.min.js"></script><![endif]-->
+    <!--[if lt IE 9]><script type="text/javascript" src="js/respond.min.js"></script><![endif]-->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script></head>
+    <script type="text/javascript" src="/public/js/nicescroll/jquery.nicescroll.js"></script></head>
+    <script type="text/javascript" src="/public/js/design/controls/jquery.file_browser.js"></script></head>
+<body>
+
+    <div class="dialog-picker">
+
+    </div>
+    <script>
+        $(document).ready(function () {
+           $(".dialog-picker").FileBrowser(
+                   {
+                       data: [
+                           {
+                               name:"Папка",
+                               type:"folder",
+                               link:"/Папка/",
+                               child:[
+                                   {
+                                       name:"Папка",
+                                       type:"folder",
+                                       link:"/Папка/",
+                                       child:[ ]
+                                   }
+                               ]
+                           },
+                           {
+                               name:"Файл",
+                               type:"file",
+                               link:"kkks.json"
+                           },
+                           {
+                               name:"Изображение",
+                               type:"image",
+                               link:"/public/img/designer/image.png"
+                           }
+                       ],
+                       selectImage:function (data) {
+                           console.log(data);
+                       },
+                       selectFile:function (data) {
+                           console.log(data);
+                       },
+                       selectFolder:function (data) {
+                           console.log(data);
+                       }
+                   }
+           );
+        });
+    </script>
+</body>
+</html>

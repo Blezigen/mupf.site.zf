@@ -1,0 +1,22 @@
+<section class="steps">
+	<div class="container">
+		<div class="row text-center">
+		<h2 class="h2">
+			Этапы
+		</h2>
+		<div class="<?php if ($count_column == 5) echo 'flex'; ?>">
+			<?php for($i = 1; $i<=$count_column; $i++) { ?>
+			<div class="col-md-<?php echo round(12/$count_column);?> img-circle">
+				<div class="b-steps">
+					<span class="span"><?php echo $i; ?></span>
+				</div>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+				</p>
+			</div>
+
+			<?php } ?>
+		</div>
+		</div>
+	</div>
+</section>

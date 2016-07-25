@@ -1,0 +1,10 @@
+<div class="make-up-box-control">
+    <label><?php echo $setting["title"]; ?></label>
+    <input class="SpinnerControl" type='text' name="<?php echo $setting["option"]; ?>" value='<?php echo $setting["default"]; ?>' placeholder='<?php echo $setting["placeholder"]; ?>'/>
+    <script>
+        $( function() {
+            $(".SpinnerControl").spinner();
+        });
+    </script>
+</div>
+
