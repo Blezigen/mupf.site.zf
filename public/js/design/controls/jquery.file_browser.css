@@ -5,16 +5,98 @@
 }
 .file-browser-control{
     /*background-color: #00a65a;*/
-    padding: 0px 20px;
     height:100%;
     list-style: none;
     margin: 0;
     padding: 0 0 35px 0;
+    position: relative;
+}
+
+.file-browser-web-dialog{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    top: 50%;
+    z-index: 45;
+    width: 414px;
+    height: 102px;
+    margin-top: -51px;
+    margin-left: -207px;
+    padding: 10px 20px;
+    background-color: #fff;
+    border-radius: 3px;
+    display: none;
+    opacity: 0;
+}
+
+.file-browser-web-dialog-title{
+    clear: both;
+    width: 100%;
+    display: block;
+}
+
+.file-browser-control-url{
+    padding: 4px;
+    border-radius: 5px;
+    border: 1px solid #4f4f4f;
+    width: 269px;
+    outline: none;
+}
+.file-browser-btn.upload-web-dialog{
+    margin-right: 0px;
+}
+
+.file-browser-control .dark_side{
+    position: fixed;
+    z-index: 21;
+    width: 100%;
+    height:100%;
+    top:0;
+    left:0;
+    background-color: rgba(0, 172, 214, 0.42);
+    display: none;
+    opacity: 0;
 }
 
 .file-browser-control-back{
     width: 100%;
-    /*background-color: #3e4245;*/
+    /* background-color: #3e4245; */
+    clear: both;
+    display: block;
+    float: left;
+}
+
+.file-browser-btn{
+    background-color: #59a9f8;
+    color: #fff;
+    border: 0;
+    padding: 5px 15px;
+    margin: 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+.file-browser-btn.remove-file{
+    background-color: red;
+    opacity: 0;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    width:35px;
+    height:35px;
+    margin: 0px;
+    padding: 0px;
+    border-radius: 5px 0px;
+}
+.file-browser-item:hover .file-browser-btn.remove-file{
+    opacity: 1;
+}
+.file-browser-item.folder .file-browser-btn.remove-file{
+    background-color: red;
+    bottom:2px;
+    right:2px;
+    display: none;
 }
 
 .file-browser-btn.back{
@@ -28,8 +110,9 @@
     font-size: 16px;
 }
 
+
 .file-browser-item{
-    margin: 15px;
+    margin: 30px 15px;
     float: left;
     width: 142px;
     height: 106px;
@@ -47,6 +130,7 @@
     margin-top: 110px;
     width: 100%;
     text-align: center;
+    word-wrap: break-word;
 }
 
 .file-browser-item.folder{
@@ -64,9 +148,9 @@
 
 
 .file-browser-item.image{
-    background-position: center 12px;
+    background-position: center center;
     background-repeat: no-repeat;
-    background-size: 85px;
+    background-size: 98px;
 }
 
 .file-browser-item.file{
@@ -76,3 +160,33 @@
     background-size: 100px;
 }
 
+.file-browser-item.small{
+    width: 80px;
+    height: 80px;
+}
+.file-browser-item.small span{
+    font-size: 12px;
+    margin-top: 85px;
+}
+
+.file-browser-item.small.folder{
+    background-size: 80px;
+}
+
+.file-browser-item.small.image{
+    background-size: 65px;
+}
+
+.file-browser-item.small.file{
+    background-size: 70px;
+}
+.file-browser-item.small .file-browser-btn.remove-file{
+    font-size: 12px ;
+    width: 20px;
+    height: 20px;
+}
+.file-browser-item.small.folder .file-browser-btn.remove-file{
+    bottom: 19px;
+    right: 0px;
+    display: none;
+}

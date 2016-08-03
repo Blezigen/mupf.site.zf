@@ -1,9 +1,69 @@
+<style>
+    .dialog-picker {
+
+    }
+    .file-browser-control {
+        height: 98%;
+        width: 98%;
+
+        margin-top: 1%;
+        padding: 10px;
+
+        background-color: #fff;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+
+        top: 0;
+        left: 50%;
+        margin-left: -49%;
+
+        position: absolute;
+        overflow-y: scroll;
+        z-index: 2023;
+    }
+    .loadimageControl{
+
+    }
+    .imageControl{
+
+    }
+</style>
 <div class="make-up-box-control">
     <label><?php echo $setting["title"]; ?></label>
-    <input type="hidden" value="temp/image/<?php echo $setting["default"]; ?>" name="<?php echo $setting["option"]; ?>">
-    <input type="file" value="temp/image/<?php echo $setting["default"]; ?>" data-default-file="<?php echo $setting["default"]; ?>" hidden_data="<?php echo $setting["option"]; ?>" class="dropify" name="<?php echo $setting["option"]; ?>_file" data-height="200">
-    <script type="text/javascript">
-        $('.dropify').dropify();
-    </script>
-</div>
+    <input class="imageControl" type="hidden" value="<?php echo $setting["default"]; ?>" name="<?php echo $setting["option"]; ?>">
+    <div class="loadimageControl"><img src='<?php echo $setting["default"]; ?>' width="200" /></div>
+    <div class="dialog-picker-<?php echo $setting["option"]; ?>">
 
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        var start_action = false;
+
+        $(".loadimageControl img").click(function () {
+        });
+
+        function last_preloader(selector) {
+
+        }
+        function before_preloader(selector) {
+
+        }
+        var dp = $(".dialog-picker-<?php echo $setting["option"]; ?>");
+        dp.FileBrowser(
+            {
+                iconSize:"small",
+                lastLoadAction       :   last_preloader,
+                beforeUploadAction   :   before_preloader,
+                beforeLoadAction     :   before_preloader,
+                beforeRemoveAction   :   before_preloader,
+                selectFileAction : function (selector, data) {
+                        dp.FileBrowser("hide");
+//                    $(".imageControl").attr("value","/"+data.file_path);
+//                    $(".loadimageControl img").attr("src","/"+data.file_path);
+                }
+            }
+        );
+    });
+</script>

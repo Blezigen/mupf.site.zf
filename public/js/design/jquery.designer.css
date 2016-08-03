@@ -1,0 +1,235 @@
+.designer-preloader{
+    position : fixed;
+    left : 0;
+    top : 0;
+    width : 100%;
+    height : 100%;
+    background-color: #fff;
+    z-index:2016;
+    background-image: url("/public/img/preloader/pickachu.gif");
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+
+.makeup-designer{
+    padding-top: 52px;
+    position: relative;
+    width: 100%;
+}
+
+.designer-block{
+    width: 100%;
+    float: left;
+    clear: both;
+    position: relative;
+    overflow: hidden;
+}
+
+.designer-block:after{
+    content: "&nbsp;";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    height: 0;
+    line-height: 0;
+}
+
+.designer-block-view{
+    height:100%;
+    width: 100%;
+    background-color: #fff;
+    min-height: 60px; /* минимальная высота блока */
+}
+
+.designer-block-view:after{
+    content: "&nbsp;";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    height: 0;
+    line-height: 0;
+}
+.designer-block-option{
+    position: absolute;
+    right : 0;
+    top : 0;
+    opacity: 0.5;
+}
+
+.designer-block-view:hover + .designer-block-option{
+    opacity: 1;
+}
+
+.designer-block-action-add {
+    height: 0px;
+    clear: both;
+    position: relative;
+}
+.designer-block-action-add .designer-block-action-area {
+    width: 100%;
+    position: absolute;
+    height: 10px;
+    top:-5px;
+    bottom: -5px;
+    z-index: 100;
+    -webkit-transition: .5s ease;
+    transition: .5s ease;
+}
+.designer-block-action-add .designer-block-action-area:hover {
+    height:40px;
+    top:-20px;
+    bottom:-20px;
+    background-color: #00acd6;
+}
+.designer-block-action-add .designer-block-action-button {
+    height: 100%;
+    width: 100px;
+    font-size: 8px;
+    border:none;
+    background-color: transparent;
+    padding:0;
+    margin: 0 auto;
+    display: block;
+    -webkit-transition: .5s ease;
+    transition: .5s ease;
+}
+
+.designer-block-action-add .designer-block-action-area:hover .designer-block-action-button {
+    height: 100%;
+    font-size: 12px;
+    display: block;
+    width: 100%;
+}
+
+.designer-block-modal {
+    width: 400px;
+    height: 500px;
+    position: fixed;
+    background-color: #fff;
+    margin-left: -200px;
+    margin-top: -250px;
+    top: 50%;
+    left: 50%;
+    z-index: 2003;
+    padding: 15px;
+    border-radius: 3px;
+    border: 1px solid;
+    /*opacity:0;*/
+    display: none;
+}
+.designer-block-modal.add {
+    width: 600px;
+    height: 500px;
+    margin-left: -300px;
+    padding: 15px 0px;
+
+}
+
+.designer-block-title {
+    padding-bottom: 15px;
+    text-align: center;
+}
+.designer-block-body {
+    overflow-y: auto;
+    height: 94%;
+}
+
+.designer-dark-side{
+    position: fixed;
+    background-color: rgba(71, 64, 72, 0.42);
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+}
+
+ul.pack_browser{
+    background-color: #CDD2E0;
+    list-style: none;
+    padding: 0px;
+    width: 100%;
+    margin: 0 auto;
+}
+ul.pack_browser .pack{
+    width: 100%;
+    padding: 0px;
+    float: left;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+ul.pack_browser .pack > img{
+    width: 100%;
+    height: 128px;
+}
+ul.pack_browser .pack > span{
+    background-color: rgba(7, 35, 71, 0.45);
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    left: 100%;
+    line-height: 128px;
+    -webkit-transition: .5s ease;
+    transition: .5s ease;
+    color: #fff;
+    font-size: 18px;
+}
+ul.pack_browser .pack:hover > span{
+    left: 0;
+}
+
+
+
+
+ul.pack_browser ul.pack_templates {
+    background-color: #CDD2E0;
+    list-style: none;
+    padding: 0px;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+ul.pack_browser ul.pack_templates.active {
+
+}
+
+ul.pack_templates{
+    background-color: #CDD2E0;
+    list-style: none;
+    height: 400px;
+    overflow-y: scroll;
+    width: calc(512px + 19px);
+    margin: 0 auto;
+}
+ul.pack_templates > li{
+    width: 162px;
+    height: 80px;
+    margin: 5px 4px;
+    float: left;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    -webkit-transition: .5s ease;
+    transition: .5s ease;
+}
+ul.pack_templates > li:hover{
+    background-color: rgba(7, 35, 71, 0.45);
+}
+ul.pack_templates > li > img{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+ul.pack_templates > li > span{
+    position: absolute;
+    right: -100%;
+    top: 0;
+    line-height: 80px;
+    vert-align: middle;
+    display: block;
+    width: 100%;
+}
+ul.pack_templates > li:hover > span{
+    right: 0;
+}

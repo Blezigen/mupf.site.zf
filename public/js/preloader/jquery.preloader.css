@@ -1,0 +1,26 @@
+.jj_preloader{
+    position : absolute;
+    display : block;
+    left: 50%;
+    margin-left: -40px;
+    margin-top: -45px;
+    top: 50%;
+    text-align:center;
+    background-image: url("/public/img/preloader/pickachu.gif");
+    background-size: 80px;
+    background-position: center center;
+    width: 80px;
+    height: 90px;
+    background-repeat: no-repeat;
+    background-color:#fff;
+}
+
+.jj_preloader span{
+    position: absolute;
+    background-color:#fff;
+    top:100%;
+    width: 100%;
+    margin-top:10px;
+    left: 0px;
+    text-align: center;
+}

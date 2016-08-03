@@ -1,17 +1,22 @@
-<?php if ($action == "block.get" ) { ?>
-    <div class="makeup-modal-title">
-        <div class="make-up-box-control">
-            Редактирование блока: $lg_<?php echo $print_data["data"]["id_section"]?>
-        </div>
-    </div>
-    <div class="makeup-modal-body">
-        <form action="setOptionBlock" class="set-option" method="get" id-section="<?php echo $print_data["data"]["id_section"]?>" update-block="#<?php echo $controller->_getSuffix(); ?><?php echo $print_data["data"]["id_section"]?>">
-            <?php $controller->get_SettingGrid($print_data["data"]["id_section"],$print_data["data"]["name_pack"], $print_data["data"]["name_template"]);?>
+<?php if ($action == "block.get.option" ) { ?>
+    <?php $block = $print_data["data"]["block"]; ?>
+    <?php if (isset($block)) { ?>
+        <form>
+            <?php $controller->get_SettingGrid($block->getId(),$block->getNamePack(), $block->getNameTemplate());?>
             <div class="make-up-box-control">
                 <button class="btn-design btn-submit" type="submit">Сохранить</button>
             </div>
         </form>
-    </div>
+    <?php } else { ?>
+        оШИБКА НЕ НАЙДЕНО НАСТРОЕК ТА КАК БЛОК НЕ СУЩЕСТВУЕТ
+    <?php }?>
+<?php } else if ($action == "blocks.get" ) { ?>
+    <?php $return_data = $print_data["data"]; ?>
+    <?php echo json_encode($return_data); ?>
+<?php } else if ($action == "block.get.style" ) { ?>
+    <?php echo $print_data["data"]["style"]; ?>
+<?php } else if ($action == "block.get.code" ) { ?>
+    <?php echo $print_data["data"]["code"]; ?>
 <?php } else if ($action == "block.add" ) { ?>
     <div class="makeup-add"><div class="makeup-add-button_area"><button class="makeup-add-button btn-design" insert-position="0"><i class="fa fa-plus fa-lg" aria-hidden="true"></button></i></div></div>
     <?php $insert_position = 1; ?>
@@ -47,5 +52,5 @@
         <?php $insert_position++;?>
     <?php } ?>
 <?php } else if ($action == "block.set" ) { ?>
-    <?php echo $controller->_getContent($print_data["data"]->getNamePack(),$print_data["data"]->getNameTemplate(),$print_data["data"]->getConfig(),$print_data["data"]->getId()); ?>
+
 <?php } ?>

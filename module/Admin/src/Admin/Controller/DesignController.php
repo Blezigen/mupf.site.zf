@@ -58,13 +58,6 @@ class DesignController extends BaseController
 //        $this->_io->save_file("public/css/autogen/blocks.json", json_encode($this->_config["blocks"],JSON_UNESCAPED_UNICODE));
     }
 
-    public function _getBlocks($id = null){
-//        $_config = $this->getConfig(1,"blocks");
-//        if (isset($id)) {
-//            return $_config[$id];
-//        }
-//        else return $_config;
-    }
     public function _getSuffix(){
         return $this->_site->getSuffix();// $this->getConfig(1,"suffix");
     }
@@ -228,14 +221,86 @@ class DesignController extends BaseController
         $return_data = array();
 
 //        $_config = $this->getConfig(1,"blocks");
-
+//        for ($i = 0; $i<10000000; $i++){}
         if ($request->isXmlHttpRequest()) {
             $post_data = $request->getPost();
-            if ($post_data["action"] == "block.get"){
+            if ($post_data["action"] == "block.get.option"){
                 $request = $this->getRequest();
                 $post_data = null;
                 if ($request->isXmlHttpRequest()) {
                     $post_data = $request->getPost();
+                    $block = $this->_site->getBlock($post_data->id_block);
+                    $post_data["block"] = $block;
+                }
+                $return_data["data"] = $post_data;
+            }
+            else if ($post_data["action"] == "blocks.get"){
+                $request = $this->getRequest();
+                $post_data = null;
+                if ($request->isXmlHttpRequest()) {
+                    $post_data = $request->getPost();
+                    $blocks = $this->_site->getBlocks();
+
+                    $print_data["count_block"] = count($blocks);
+                    $print_data["blocks"] = array();
+                    foreach ($blocks as $key => $block){
+//                        $block = $this->_site->getBlock($post_data->id_block);
+                        $parent = "#".$this->_getSuffix() . $block->getId();
+                        $pack = $this->_pack_browser->getPack($block->getNamePack());
+                        $template = $pack->getTemplate($block->getNameTemplate());
+
+                        $print_data["blocks"][] = array(
+                            "style" => $template->getTemplateStyle(
+                                array(
+                                    "option" => $block->getConfig(),
+                                    "parent" => $parent,
+                                    "base_image_dir" =>  "/temp/image/",
+                                    )
+                            ),
+                            "code" => $template->getTemplateText(
+                                array(
+                                    "option" => $block->getConfig()
+                                )
+                            )
+                        );
+
+                    }
+
+                }
+                $return_data["data"] = $print_data;
+            }
+            else if ($post_data["action"] == "block.get.style"){
+                $request = $this->getRequest();
+                $post_data = null;
+                if ($request->isXmlHttpRequest()) {
+                    $post_data = $request->getPost();
+                    $block = $this->_site->getBlock($post_data->id_block);
+                    $parent = "#".$this->_getSuffix() . $block->getId();
+                    $pack = $this->_pack_browser->getPack($block->getNamePack());
+                    $template = $pack->getTemplate($block->getNameTemplate());
+
+                    $post_data["style"] = "<style type=\"text/css\">".
+                                                $template->getTemplateStyle(
+                                                    array(
+                                                        "option" => $block->getConfig(),
+                                                        "parent" => $parent,
+                                                        "base_image_dir" =>  "/temp/image/",
+                                                    )
+                                                ).
+                                            "</style>";
+                }
+                $return_data["data"] = $post_data;
+            }
+            else if ($post_data["action"] == "block.get.code"){
+                $request = $this->getRequest();
+                $post_data = null;
+                if ($request->isXmlHttpRequest()) {
+                    $post_data = $request->getPost();
+                    $block = $this->_site->getBlock($post_data->id_block);
+                    $pack = $this->_pack_browser->getPack($block->getNamePack());
+                    $template = $pack->getTemplate($block->getNameTemplate());
+
+                    $post_data["code"]  = $template->getTemplateText(array("option" => $block->getConfig()));
                 }
                 $return_data["data"] = $post_data;
             }
@@ -264,7 +329,7 @@ class DesignController extends BaseController
                 $return_data["data"] = $site->getBlocks();
             }
             else if ($post_data["action"] == "block.remove"){
-                $site->removeBlock($post_data["remove_block_id"]);
+                $site->removeBlock($post_data["block_id"]);
                 $site->saveBlocks();
                 $site->reload();
                 $return_data["data"] = $site->getBlocks();
@@ -275,7 +340,7 @@ class DesignController extends BaseController
         return $viewModel;
     }
 
-    public function uploadFileAction(){
+    public function uploadFile(){
         $data = $_POST;
         $dir = __DIR__;
         $upload_dir = realpath("temp/image/");
@@ -286,6 +351,40 @@ class DesignController extends BaseController
         } else {
             echo "Возможная атака с помощью файловой загрузки!\n";
         }
+        $viewModel = new ViewModel(array());
+        $viewModel->setTerminal(true);
+        return $viewModel;
+
+    }
+
+    public function browserAction(){
+        $request = $this->getRequest();
+        $base_file_path = "tempControl/";
+        if ($request->isPost()) {
+            $post_data = $request->getPost();
+            if($post_data["action"] == "getFolder") {
+                $path = isset($post_data["path"]) ? $post_data["path"] : "";
+                $filter = isset($post_data["filter"]) ? $post_data["filter"] : "";
+                $hiddenType = array("htaccess");
+                echo json_encode(IO::getFolders($base_file_path, $path, $filter, -1, null, $hiddenType));
+            }
+            elseif($post_data["action"] == "uploadLocalFile") {
+                $path = isset($post_data["path"]) ? $post_data["path"] : "";
+                $file = $_FILES[0];
+                echo json_encode(IO::uploadLocalFile($base_file_path."/".$path,$file));
+            }
+            elseif($post_data["action"] == "uploadWebFile") {
+                $path = isset($post_data["path"]) ? $post_data["path"] : "";
+                $target = isset($post_data["target"]) ? $post_data["target"] : "";
+                $name = isset($post_data["name"]) ? $post_data["name"] : basename($target);
+                echo json_encode(IO::uploadWebFile($target,$base_file_path."/".$path."/".$name));
+            }
+            elseif($post_data["action"] == "removeFile") {
+                $path = isset($post_data["path"]) ? $post_data["path"] : "";
+                echo json_encode(IO::removeFile($base_file_path.$path));
+            }
+        }
+
         $viewModel = new ViewModel(array());
         $viewModel->setTerminal(true);
         return $viewModel;
