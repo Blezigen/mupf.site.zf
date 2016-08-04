@@ -259,7 +259,8 @@ class DesignController extends BaseController
                             ),
                             "code" => $template->getTemplateText(
                                 array(
-                                    "option" => $block->getConfig()
+                                    "option" => $block->getConfig(),
+                                    "parent" => $parent
                                 )
                             )
                         );
@@ -362,24 +363,24 @@ class DesignController extends BaseController
         $base_file_path = "tempControl/";
         if ($request->isPost()) {
             $post_data = $request->getPost();
-            if($post_data["action"] == "getFolder") {
+            if($post_data["action"] == "folder.get.all") {
                 $path = isset($post_data["path"]) ? $post_data["path"] : "";
                 $filter = isset($post_data["filter"]) ? $post_data["filter"] : "";
                 $hiddenType = array("htaccess");
                 echo json_encode(IO::getFolders($base_file_path, $path, $filter, -1, null, $hiddenType));
             }
-            elseif($post_data["action"] == "uploadLocalFile") {
+            elseif($post_data["action"] == "folder.upload.local") {
                 $path = isset($post_data["path"]) ? $post_data["path"] : "";
                 $file = $_FILES[0];
                 echo json_encode(IO::uploadLocalFile($base_file_path."/".$path,$file));
             }
-            elseif($post_data["action"] == "uploadWebFile") {
+            elseif($post_data["action"] == "folder.upload.web") {
                 $path = isset($post_data["path"]) ? $post_data["path"] : "";
                 $target = isset($post_data["target"]) ? $post_data["target"] : "";
                 $name = isset($post_data["name"]) ? $post_data["name"] : basename($target);
                 echo json_encode(IO::uploadWebFile($target,$base_file_path."/".$path."/".$name));
             }
-            elseif($post_data["action"] == "removeFile") {
+            elseif($post_data["action"] == "file.remove") {
                 $path = isset($post_data["path"]) ? $post_data["path"] : "";
                 echo json_encode(IO::removeFile($base_file_path.$path));
             }

@@ -1,5 +1,15 @@
 <div class="make-up-box-control">
-    <label><?php echo $setting["title"]; ?></label>
-    <input class="TextControl" type='text' name="<?php echo $setting["option"]; ?>" value='<?php echo $setting["default"]; ?>' placeholder='<?php echo $setting["placeholder"]; ?>'/>
+    <label class="title-box"><?php echo $setting["title"]; ?></label>
+    <div class="body-box">
+        <input class="TextControl" type='text' name="<?php echo $setting["option"]; ?>" value='<?php echo $setting["default"]; ?>' placeholder='<?php echo $setting["placeholder"]; ?>'/>
+    </div>
 </div>
 
+<style>
+    input[type="text"].TextControl{
+        width: 100%;
+        padding: 4px;
+        border-radius: 3px;
+        border: 1px solid #a1a1a1;
+    }
+</style>

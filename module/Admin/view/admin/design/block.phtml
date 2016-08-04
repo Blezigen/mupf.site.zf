@@ -5,6 +5,11 @@
             <?php $controller->get_SettingGrid($block->getId(),$block->getNamePack(), $block->getNameTemplate());?>
             <div class="make-up-box-control">
                 <button class="btn-design btn-submit" type="submit">Сохранить</button>
+                <style>
+                    .make-up-box-control .btn-submit{
+                        width:100%;
+                    }
+                </style>
             </div>
         </form>
     <?php } else { ?>

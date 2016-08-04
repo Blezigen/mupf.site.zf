@@ -2,21 +2,37 @@
 	 <div class="container">
           <div class="row text-center">
             <h1>
-            	Заголовок самый основной 
+                <?php if (!empty($text_H1)) { ?>
+            	    <?php echo $text_H1; ?>
+                <?php } else { ?>
+                    Заголовок типа H1
+                <?php } ?>
             </h1>
             <div class="text">
               <p>
-                Под заголовок тектса
+                  <?php if (!empty($sub_text_H1)) { ?>
+                      <?php echo $sub_text_H1; ?>
+                  <?php } else { ?>
+                      Подзаголовок ТИПА АБЗАЦ
+                  <?php } ?>
               </p>
             </div>
           </div>
           <div class="row text-center">
           	<p>
-          		Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. 
+                <?php if (!empty($text_slogan)) { ?>
+                    <?php echo $text_slogan; ?>
+                <?php } else { ?>
+                    Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты.
+                <?php } ?>
           	</p>
           	<div class="home-b text-center">
           		<button class="btn btn-warning  btn-lg">
-          			заказать
+                    <?php if (!empty($text_button)) { ?>
+                        <?php echo $text_button; ?>
+                    <?php } else { ?>
+                        Заказать
+                    <?php } ?>
           		</button>
           	</div>
           </div>

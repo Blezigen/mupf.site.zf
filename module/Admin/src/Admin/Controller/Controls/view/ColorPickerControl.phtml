@@ -1,10 +1,20 @@
 <div class="make-up-box-control">
-    <label><?php echo $setting["title"]; ?></label>
-    <input class="ColorPicker" type='text' name="<?php echo $setting["option"]; ?>" value='<?php echo $setting["default"]; ?>'/>
+    <label class="title-box"><?php echo $setting["title"]; ?></label>
+    <div class="body-box">
+        <input class="ColorPicker" type='text' name="<?php echo $setting["option"]; ?>" value='<?php echo $setting["default"]; ?>'/>
+    </div>
     <script>
         $(function() {
-            //$('.ColorPicker').colorpicker();
+            $('.ColorPicker').colorpicker();
         });
     </script>
+    <style>
+        input[type="text"].ColorPicker{
+            width: 100%;
+            padding: 4px;
+            border-radius: 3px;
+            border: 1px solid #a1a1a1;
+        }
+    </style>
 </div>
 

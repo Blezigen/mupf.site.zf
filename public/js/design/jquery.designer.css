@@ -11,7 +11,16 @@
     background-repeat: no-repeat;
 }
 
+.designer-block-action-button.caction_add{
+    width: 100%;
+    opacity: 0;
+    -webkit-transition: .5s ease;
+    transition: .5s ease;
+}
+.designer-block-action-button.caction_add:hover{
+    opacity: 1;
 
+}
 .makeup-designer{
     padding-top: 52px;
     position: relative;
@@ -23,16 +32,41 @@
     float: left;
     clear: both;
     position: relative;
-    overflow: hidden;
 }
 
 .designer-block:after{
-    content: "&nbsp;";
+    content: "";
     display: block;
     clear: both;
     visibility: hidden;
     height: 0;
     line-height: 0;
+}
+
+.make-up-box-control{
+    padding:10px;
+}
+
+.make-up-box-control .title-box{
+    clear: both;
+}
+.make-up-box-control .body-box{
+    clear: both;
+}
+
+.btn-design{
+    padding:5px;
+    border-radius: 3px;
+    outline: none;
+    border: none;
+    background-color: #204e54;
+    color: #fff;
+}
+.btn-design:hover{
+    background-color: #286c72;
+}
+.btn-design:active{
+    background-color: #19363b;
 }
 
 .designer-block-view{
@@ -43,7 +77,7 @@
 }
 
 .designer-block-view:after{
-    content: "&nbsp;";
+    content: "";
     display: block;
     clear: both;
     visibility: hidden;
@@ -51,22 +85,37 @@
     line-height: 0;
 }
 .designer-block-option{
-    position: absolute;
+    position : absolute;
+    height : 50px;
     right : 0;
     top : 0;
-    opacity: 0.5;
+    z-index: 60;
+}
+
+.designer-block-option .designer-block-action-button{
+    float: left;
+    margin-top: 10px;
+}
+
+.designer-block-action-button.caction_edit{
+    border-radius: 3px 0 0 3px;
+}
+.designer-block-action-button.caction_edit:hover{
+
+}
+
+.designer-block-action-button.caction_remove{
+    border-radius: 0 3px 3px 0px;
+    margin-right: 10px;
+}
+.designer-block-action-button.caction_remove:hover{
 }
 
 .designer-block-view:hover + .designer-block-option{
     opacity: 1;
 }
 
-.designer-block-action-add {
-    height: 0px;
-    clear: both;
-    position: relative;
-}
-.designer-block-action-add .designer-block-action-area {
+.designer-block-action-area {
     width: 100%;
     position: absolute;
     height: 10px;
@@ -76,30 +125,29 @@
     -webkit-transition: .5s ease;
     transition: .5s ease;
 }
-.designer-block-action-add .designer-block-action-area:hover {
+.designer-block-action-area:hover {
     height:40px;
     top:-20px;
     bottom:-20px;
     background-color: #00acd6;
 }
-.designer-block-action-add .designer-block-action-button {
+.designer-block-action-button {
     height: 100%;
-    width: 100px;
-    font-size: 8px;
+    width: 50px;
+    font-size: 18px;
     border:none;
-    background-color: transparent;
     padding:0;
     margin: 0 auto;
     display: block;
     -webkit-transition: .5s ease;
     transition: .5s ease;
+    outline:none;
 }
 
-.designer-block-action-add .designer-block-action-area:hover .designer-block-action-button {
+.designer-block-action-button:hover {
     height: 100%;
-    font-size: 12px;
-    display: block;
-    width: 100%;
+    font-size: 33px;
+    background-color: #00a157;
 }
 
 .designer-block-modal {

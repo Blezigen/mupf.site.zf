@@ -1,0 +1,39 @@
+<?php echo $parent; ?> .paralax-steps{
+	width:100%;
+	height:100vh;
+	position:relative;
+	overflow:hidden;
+}
+<?php echo $parent; ?> .paralax-steps .background{
+	position:absolute;
+	-webkit-background-size: cover;
+	background-size:  cover;
+	background-repeat: no-repeat;
+	width:100%;
+	height:100vh;
+}
+
+<?php echo $parent; ?> .paralax-steps .background.background_back{
+	z-index: 1;
+	background-image:url('<?php echo $background_back; ?>');
+	width:calc(100% + 400px);
+	height:calc(100vh + 600px);
+	margin-left:-200px;
+	margin-right:-200px;
+	margin-top:-300px;
+	margin-bottom:-300px;
+}
+<?php echo $parent; ?> .paralax-steps .background.background_middle{
+	z-index: 2;
+	background-image:url('<?php echo $background_middle; ?>');
+	margin-left:-120px;
+	margin-top:15px;
+}
+<?php echo $parent; ?> .paralax-steps .background.background_front{
+	z-index: 3;
+	background-image:url('<?php echo $background_front; ?>');
+	/*background-size: 150px auto;*/
+	opacity:0.1;
+	background-size: cover;
+	background-position: center center;
+}

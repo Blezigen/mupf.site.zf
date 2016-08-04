@@ -1,6 +1,14 @@
 <style>
-    .dialog-picker {
-
+    .dialog-picker-<?php echo $setting["option"]; ?> {
+        position: fixed;
+        z-index: 2043;
+        top: 50%;
+        left: 50%;
+        width: 600px;
+        height: 500px;
+        margin-left: -300px;
+        margin-top: -250px;
+        display: none;
     }
     .file-browser-control {
         height: 98%;
@@ -30,40 +38,43 @@
     }
 </style>
 <div class="make-up-box-control">
-    <label><?php echo $setting["title"]; ?></label>
-    <input class="imageControl" type="hidden" value="<?php echo $setting["default"]; ?>" name="<?php echo $setting["option"]; ?>">
-    <div class="loadimageControl"><img src='<?php echo $setting["default"]; ?>' width="200" /></div>
-    <div class="dialog-picker-<?php echo $setting["option"]; ?>">
-
+    <label class="title-box"><?php echo $setting["title"]; ?></label>
+    <div class="body-box">
+        <input class="hidden-<?php echo $setting["option"]; ?>" type="hidden" value="<?php echo $setting["default"]; ?>" name="<?php echo $setting["option"]; ?>">
+        <div class="control-<?php echo $setting["option"]; ?>"><img src='<?php echo $setting["default"]; ?>' width="200" /></div>
+        <div class="dialog-picker-<?php echo $setting["option"]; ?>"></div>
     </div>
 </div>
 <script>
     $(document).ready(function () {
         var start_action = false;
 
-        $(".loadimageControl img").click(function () {
-        });
-
-        function last_preloader(selector) {
-
-        }
-        function before_preloader(selector) {
-
-        }
-        var dp = $(".dialog-picker-<?php echo $setting["option"]; ?>");
-        dp.FileBrowser(
-            {
-                iconSize:"small",
-                lastLoadAction       :   last_preloader,
-                beforeUploadAction   :   before_preloader,
-                beforeLoadAction     :   before_preloader,
-                beforeRemoveAction   :   before_preloader,
-                selectFileAction : function (selector, data) {
-                        dp.FileBrowser("hide");
-//                    $(".imageControl").attr("value","/"+data.file_path);
-//                    $(".loadimageControl img").attr("src","/"+data.file_path);
+        $(".control-<?php echo $setting["option"]; ?>").unbind("click");
+        $(".control-<?php echo $setting["option"]; ?>").click(function () {
+            $(".dialog-picker-<?php echo $setting["option"]; ?>").css("display","block");
+            $(".dialog-picker-<?php echo $setting["option"]; ?>").FileBrowser(
+                {
+                    iconSize:"small",
+                    selectImageAction : function (data) {
+                        $(".control-<?php echo $setting["option"]; ?> img").attr("src",data.url);
+                        $(".hidden-<?php echo $setting["option"]; ?>").val(data.url);
+                        $(".dialog-picker-<?php echo $setting["option"]; ?>").css("display","none");
+                    },
+                    selectFileAction : function (data) {
+                        alert(data.url);
+                    }
                 }
-            }
-        );
+            );
+        });
     });
 </script>
+<style>
+    .control-<?php echo $setting["option"]; ?>{
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+        padding: 4px;
+        border-radius: 3px;
+        border: 1px solid #a1a1a1;
+    }
+</style>

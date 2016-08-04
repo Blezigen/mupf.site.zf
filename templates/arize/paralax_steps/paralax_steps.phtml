@@ -1,0 +1,26 @@
+<section class="paralax-steps">
+	<div class="background background_back"></div>
+	<div class="background background_middle"></div>
+	<div class="background background_front"></div>
+</section>
+<script>
+	// <?php echo $parent; ?> // #lg_{id}
+	var current = $("<?php echo $parent; ?>").find(".paralax-steps");
+
+	var background_back = current.find(".background_back");
+	var background_middle = current.find(".background_middle");
+	var background_front = current.find(".background_front");
+
+	var center = {
+		x: current.innerWidth() / 2,
+		y: current.innerHeight() / 2
+	}
+	current.mousemove(function (event) {
+		background_middle.css("left",Math.round((center.x - event.pageX)/10) +'px');
+		//background_middle.css("top",Math.round((center.y - event.pageY)/10) +'px');
+		background_back.css("left",Math.round((0 + event.pageX)/10) +'px');
+		background_back.css("top",Math.round((0 + event.pageY)/10) +'px');
+
+		background_front.css("top", 0 +'px');
+	});
+</script>

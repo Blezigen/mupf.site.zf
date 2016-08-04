@@ -95,7 +95,7 @@ class TemplateModel extends AdstractModel
         if ( !realpath($path_to_pack) ) return $return_data;
 
         $config = $this->parse_config($args["option"]);
-
+        $config["parent"] = $args["parent"];
         $return_data .= IO::getFileData(realpath($path_to_pack), $config);
 
         return $return_data;

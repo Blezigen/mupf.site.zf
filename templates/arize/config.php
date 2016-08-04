@@ -13,6 +13,7 @@ include_once "price/price.php";
 include_once "reviews/reviews.php";
 include_once "steps/steps.php";
 include_once "home/home.php";
+include_once "paralax_steps/paralax_steps.php";
 
 $pack_config = array(
     "config" => array(
@@ -35,7 +36,8 @@ $pack_config = array(
         "price",
         "reviews",
         "steps",
-        "home"
+        "home",
+        "paralax_steps"
     )
 );
 

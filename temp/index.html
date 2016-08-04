@@ -18,14 +18,34 @@
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script></head>
 <body>
-    <section id="lg_0"><section class="steps">
+    <section id="lg_0"><section class="home">
+	 <div class="container">
+          <div class="row text-center">
+            <h1>
+                            	    Службы выноса мусора из ваших квартир                            </h1>
+            <div class="text">
+              <p>
+                                        Выбросим мусор из вашей квартиры всего за пакет молока                                 </p>
+            </div>
+          </div>
+          <div class="row text-center">
+          	<p>
+                                    Мы бомжи народ не превиредливый                           	</p>
+          	<div class="home-b text-center">
+          		<button class="btn btn-warning  btn-lg">
+                                            Ну че ты, вынести мусор                               		</button>
+          	</div>
+          </div>
+        </div>
+</section></section>
+<section id="lg_1"><section class="steps">
 	<div class="container">
 		<div class="row text-center">
 		<h2 class="h2">
 			Этапы
 		</h2>
 		<div class="">
-						<div class="col-md-2 img-circle">
+						<div class="col-md-3 img-circle">
 				<div class="b-steps">
 					<span class="span">1</span>
 				</div>
@@ -34,7 +54,7 @@
 				</p>
 			</div>
 
-						<div class="col-md-2 img-circle">
+						<div class="col-md-3 img-circle">
 				<div class="b-steps">
 					<span class="span">2</span>
 				</div>
@@ -43,7 +63,7 @@
 				</p>
 			</div>
 
-						<div class="col-md-2 img-circle">
+						<div class="col-md-3 img-circle">
 				<div class="b-steps">
 					<span class="span">3</span>
 				</div>
@@ -52,36 +72,9 @@
 				</p>
 			</div>
 
-						<div class="col-md-2 img-circle">
+						<div class="col-md-3 img-circle">
 				<div class="b-steps">
 					<span class="span">4</span>
-				</div>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-				</p>
-			</div>
-
-						<div class="col-md-2 img-circle">
-				<div class="b-steps">
-					<span class="span">5</span>
-				</div>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-				</p>
-			</div>
-
-						<div class="col-md-2 img-circle">
-				<div class="b-steps">
-					<span class="span">6</span>
-				</div>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-				</p>
-			</div>
-
-						<div class="col-md-2 img-circle">
-				<div class="b-steps">
-					<span class="span">7</span>
 				</div>
 				<p>
 					Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -91,6 +84,64 @@
 					</div>
 		</div>
 	</div>
+</section></section>
+<section id="lg_2"><section class="paralax-steps">
+	<div class="background background_back"></div>
+	<div class="background background_middle"></div>
+	<div class="background background_front"></div>
+</section>
+<script>
+	//  // #lg_{id}
+	var current = $("").find(".paralax-steps");
+
+	var background_back = current.find(".background_back");
+	var background_middle = current.find(".background_middle");
+	var background_front = current.find(".background_front");
+
+	var center = {
+		x: current.innerWidth() / 2,
+		y: current.innerHeight() / 2
+	}
+	current.mousemove(function (event) {
+		background_middle.css("left",Math.round((center.x - event.pageX)/10) +'px');
+		//background_middle.css("top",Math.round((center.y - event.pageY)/10) +'px');
+		background_back.css("left",Math.round((0 + event.pageX)/10) +'px');
+		background_back.css("top",Math.round((0 + event.pageY)/10) +'px');
+
+		background_front.css("top", 0 +'px');
+	});
+</script></section>
+<section id="lg_3"><section class="footers">
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-2 col-sm-6 footerleft text-center">
+					<div class="logofooter">ЛОГО</div>
+				</div>
+				<div class="col-md-4 col-sm-6 paddingtop-bottom">
+					<div class="post">
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, veritatis, perspiciatis? 
+						</p>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6 pull-right paddingtop-bottom text-center">
+					<div class="post">
+						<h6 class="heading7">
+							+7(999)999 99 99
+						</h6>
+						<button type="button" class="btn btn-default">Заказать</button>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6 paddingtop-bottom text-center">
+					<h6 class="heading7">Заголовок</h6>
+					<div class="logofooter">
+						ЛОГО
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
 </section></section>
 </body>
 </html>
